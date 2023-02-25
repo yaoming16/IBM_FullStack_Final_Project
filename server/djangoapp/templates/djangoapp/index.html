@@ -95,5 +95,46 @@
     </nav>
 
     <!--Add a dealer table here -->
+    <div class="container mt-5 mb-5">
+      <table
+        class="table table-striped"
+        id="table"
+        data-filter-control="true"
+        data-show-search-clear-button="true"
+      >
+        <thead>
+          <tr class="text-center">
+            <th data-field="id" scope="col">ID</th>
+            <th data-field="full_name" scope="col">Dealer Name</th>
+            <th data-field="city" scope="col">City</th>
+            <th data-field="address" scope="col">Address</th>
+            <th data-field="zip" scope="col">Zip</th>
+            <th data-field="st" scope="col" data-filter-control="select">
+              State
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for dealer in dealerships %}
+          <tr>
+            <td>{{dealer.id}}</td>
+            <td>
+              <a href="/djangoapp/dealer/{{dealer.id}}">{{dealer.full_name}}</a>
+            </td>
+            <td>{{dealer.city}}</td>
+            <td>{{dealer.address}}</td>
+            <td>{{dealer.zip}}</td>
+            <td>{{dealer.st}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
   </body>
+
+  <script>
+    $(function () {
+      $("#table").bootstrapTable();
+    });
+  </script>
 </html>
